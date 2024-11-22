@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SOFTWARE Developers</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f9f9f9;
+        }
+        header {
+            width: 100%;
+        }
+        nav {
+            background-color: #444;
+            overflow: hidden;
+        }
+        nav a {
+            color: white;
+            padding: 14px 20px;
+            text-decoration: none;
+            float: left;
+            display: block;
+            text-align: center;
+        }
+        nav a:hover {
+            background-color: #ddd;
+            color: black;
+        }
+        .main-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin: 20px;
+        }
+        .product-card {
+            background-color: white;
+            width: 200px;
+            margin: 10px;
+            padding: 15px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+        .product-card img {
+            width: 100%;
+            border-radius: 10px;
+        }
+        .product-card h3 {
+            margin-top: 10px;
+            font-size: 1.2em;
+        }
+        .product-card p {
+            color: #888;
+            font-size: 0.9em;
+        }
+        .product-card .price {
+            font-weight: bold;
+            color: #333;
+            margin-top: 10px;
+        }
+        .footer {
+            background-color: #333;
+            color: white;
+            padding: 10px 0;
+            text-align: center;
+            position: relative;
+            bottom: 0;
+            width: 100%;
+        }
+        .footer a {
+            color: #fff;
+            text-decoration: none;
+            margin: 0 10px;
+        }
+        .footer a:hover {
+            text-decoration: underline;
+        }
+        .contact-info {
+            margin-top: 20px;
+            text-align: center;
+            color: #555;
+        }
+        .contact-info a {
+            color: #008CBA;
+            text-decoration: none;
+        }
+
+        /* Popup Styles */
+        .popup {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+        .popup-content {
+            background-color: white;
+            padding: 30px;
+            border-radius: 8px;
+            text-align: center;
+            width: 300px;
+        }
+        .popup button {
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        .popup button:hover {
+            background-color: #0056b3;
+        }
+        .close-btn {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            font-size: 18px;
+            cursor: pointer;
+            background-color: transparent;
+            border: none;
+            color: #aaa;
+        }
+        .close-btn:hover {
+            color: black;
+        }
+        .Order-btn {
+            padding: 15px 30px;
+            background-color: #28a745;
+            color: white;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+        .Order-btn:hover {
+            background-color: #218838;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <img src="file:///Users/ishadhir/Desktop/SOFTWARE.jpg" alt="Miniature Store Banner">
+</header>
+
+<nav>
+    <a href="#" id="Order-btn">Order</a>
+    <a href="AboutMe.html">About Us</a>
+</nav>
+
+<div class="main-container">
+    <div class="product-card">
+        <img src="file:///Users/ishadhir/Desktop/New%20Note%202.jpeg" alt="Basic">
+        <h3>Basic</h3>
+        <p>A basic website with basic looks and no hightech programing</p>
+        <p class="price">Rs.200</p>
+    </div>
+
+    <div class="product-card">
+        <img src="file:///Users/ishadhir/Desktop/New%20Note%203.jpeg" alt="intermediate">
+        <h3>intermediate</h3>
+        <p>A website with more interaction and cooler look </p>
+        <p class="price">Rs.300</p>
+    </div>
+
+    <div class="product-card">
+        <img src="file:///Users/ishadhir/Desktop/New%20Note.jpeg" alt="Advanced" height="100" width="100">
+        <h3>Advanced</h3>
+        <p>Unique look pieces and max interaction you can get</p>
+        <p class="price">Rs.500</p>
+    </div>
+
+    <!-- Add more product cards as needed -->
+</div>
+
+<!-- Popup Modal -->
+<div class="popup" id="popup">
+    <div class="popup-content">
+        <button class="close-btn" id="close-popup-btn">&times;</button>
+        <h2>Get Your Own Website Built !</h2>
+        <button id="buy-now-btn">BUY NOW!</button>
+    </div>
+</div>
+
+<div class="contact-info">
+    <p>For help contact :<a href="softwaredevelopersreal@gmail.com">softwaredevelopersreal@gmail.com</a></p>
+</div>
+
+<div class="footer">
+    <p>&copy; Owner : Parth Dhir</p>
+</div>
+
+<script>
+    // Get references to the elements
+    const OrderBtn = document.getElementById('Order-btn');
+    const popup = document.getElementById('popup');
+    const buyNowBtn = document.getElementById('buy-now-btn');
+    const closePopupBtn = document.getElementById('close-popup-btn');
+
+    // Show the popup when Order button is clicked
+    OrderBtn.addEventListener('click', (e) => {
+        e.preventDefault();  // Prevent default link behavior
+        popup.style.display = 'flex';
+    });
+
+    // Close the popup and navigate to email when "BUY NOW!" is clicked
+    buyNowBtn.addEventListener('click', () => {
+        window.location.href = "mailto:softwaredevelopersreal@gmail.com"; // Use mailto for email link
+        popup.style.display = 'none';
+    });
+
+    // Close the popup when close button is clicked
+    closePopupBtn.addEventListener('click', () => {
+        popup.style.display = 'none';
+    });
+
+    // Optional: Close the popup if clicked outside of the popup content
+    window.addEventListener('click', (e) => {
+        if (e.target === popup) {
+            popup.style.display = 'none';
+        }
+    });
+</script>
+
+</body>
+</html>
